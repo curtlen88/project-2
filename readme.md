@@ -28,7 +28,8 @@ DrinkTales will be a social drink reciepe app where you can search for ingrident
 
 
 # Wireframe
-![Untitled](https://user-images.githubusercontent.com/116519447/204971379-3ef50bfd-4337-4374-a654-3c67788dfa36.png)
+
+
 
 # MVP 
 

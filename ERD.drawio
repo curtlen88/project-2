@@ -274,46 +274,10 @@
                     <mxGeometry x="424" y="440" width="60" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="247" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#4D4D4D;" vertex="1" parent="1">
-                    <mxGeometry y="930" width="790" height="850" as="geometry"/>
+                    <mxGeometry y="930" width="790" height="560" as="geometry"/>
                 </mxCell>
                 <mxCell id="248" value="Favorite Drinks" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#666666;strokeWidth=1;fillColor=#99FFFF;fontColor=#33A64C;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="1">
                     <mxGeometry x="230" y="982" width="340" height="40" as="geometry"/>
-                </mxCell>
-                <mxCell id="249" value="Ingredients" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#6C767D;strokeWidth=1;fillColor=#CCFF99;fontColor=#6C767D;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="1">
-                    <mxGeometry x="160" y="1090" width="160" height="150" as="geometry"/>
-                </mxCell>
-                <mxCell id="250" value="Drink Name" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#666666;strokeWidth=1;fillColor=#E6FFCC;fontColor=#33A64C;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="1">
-                    <mxGeometry x="250" y="1040" width="300" height="20" as="geometry"/>
-                </mxCell>
-                <mxCell id="252" value="Instructions" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#6C767D;strokeWidth=1;fillColor=#CCFF99;fontColor=#6C767D;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="1">
-                    <mxGeometry x="500" y="1090" width="160" height="150" as="geometry"/>
-                </mxCell>
-                <mxCell id="254" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;strokeColor=#000000;fillColor=#FFFFFF;" vertex="1" parent="1">
-                    <mxGeometry x="365" y="1100" width="105" height="165" as="geometry"/>
-                </mxCell>
-                <mxCell id="253" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;strokeColor=#000000;fillColor=#FF3333;" vertex="1" parent="1">
-                    <mxGeometry x="365" y="1179.5" width="105" height="85" as="geometry"/>
-                </mxCell>
-                <mxCell id="255" value="Comments" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#666666;strokeWidth=1;fillColor=#FFFFCC;fontColor=#33A64C;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="1">
-                    <mxGeometry x="235" y="1280" width="340" height="40" as="geometry"/>
-                </mxCell>
-                <mxCell id="256" value="Ingredients" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#6C767D;strokeWidth=1;fillColor=#CCFF99;fontColor=#6C767D;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="1">
-                    <mxGeometry x="160" y="1420" width="160" height="150" as="geometry"/>
-                </mxCell>
-                <mxCell id="257" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;strokeColor=#000000;fillColor=#FFFFFF;" vertex="1" parent="1">
-                    <mxGeometry x="365" y="1430" width="105" height="165" as="geometry"/>
-                </mxCell>
-                <mxCell id="258" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;strokeColor=#000000;fillColor=#0000FF;" vertex="1" parent="1">
-                    <mxGeometry x="365" y="1509.5" width="105" height="85" as="geometry"/>
-                </mxCell>
-                <mxCell id="259" value="Instructions" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#6C767D;strokeWidth=1;fillColor=#CCFF99;fontColor=#6C767D;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="1">
-                    <mxGeometry x="500" y="1420" width="160" height="150" as="geometry"/>
-                </mxCell>
-                <mxCell id="260" value="Comments" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#666666;strokeWidth=1;fillColor=#FFFFCC;fontColor=#33A64C;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="1">
-                    <mxGeometry x="235" y="1610" width="340" height="40" as="geometry"/>
-                </mxCell>
-                <mxCell id="261" value="Drink Name" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#666666;strokeWidth=1;fillColor=#E6FFCC;fontColor=#33A64C;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="1">
-                    <mxGeometry x="250" y="1380" width="300" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="263" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#4D4D4D;" vertex="1" parent="1">
                     <mxGeometry y="1810" width="790" height="350" as="geometry"/>
@@ -347,9 +311,6 @@
                 </mxCell>
                 <mxCell id="281" value="" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#D6D8DB;strokeWidth=1;fillColor=#E2E3E5;fontColor=#383D41;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=10;" vertex="1" parent="1">
                     <mxGeometry x="450" y="2055" width="120" height="10" as="geometry"/>
-                </mxCell>
-                <mxCell id="283" value="" style="line;strokeWidth=2;html=1;fillColor=#CCE5FF;" vertex="1" parent="1">
-                    <mxGeometry x="180" y="1350" width="450" height="10" as="geometry"/>
                 </mxCell>
                 <mxCell id="285" value="Home" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=none;strokeWidth=1;fillColor=#F8F9FA;fontColor=#000000;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=0;fontStyle=1;fontSize=14;spacing=5;" vertex="1" parent="1">
                     <mxGeometry x="500" y="1830" width="50" height="20" as="geometry"/>
@@ -401,6 +362,48 @@
                 </mxCell>
                 <mxCell id="302" value="Favorites" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=none;strokeWidth=1;fillColor=#F8F9FA;fontColor=#000000;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=0;fontStyle=1;fontSize=14;spacing=5;" vertex="1" parent="1">
                     <mxGeometry x="560" y="1830" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="303" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="160" y="1030" width="490" height="410" as="geometry"/>
+                </mxCell>
+                <mxCell id="249" value="Ingredients" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#6C767D;strokeWidth=1;fillColor=#CCFF99;fontColor=#6C767D;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="303">
+                    <mxGeometry y="33.606557377049185" width="156.8" height="100.81967213114754" as="geometry"/>
+                </mxCell>
+                <mxCell id="250" value="Drink Name" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#666666;strokeWidth=1;fillColor=#E6FFCC;fontColor=#33A64C;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="303">
+                    <mxGeometry x="88.2" width="294" height="13.442622950819672" as="geometry"/>
+                </mxCell>
+                <mxCell id="252" value="Instructions" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#6C767D;strokeWidth=1;fillColor=#CCFF99;fontColor=#6C767D;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="303">
+                    <mxGeometry x="333.2" y="33.606557377049185" width="156.8" height="100.81967213114754" as="geometry"/>
+                </mxCell>
+                <mxCell id="254" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;strokeColor=#000000;fillColor=#FFFFFF;" vertex="1" parent="303">
+                    <mxGeometry x="200.9" y="40.32786885245902" width="102.89999999999999" height="110.90163934426229" as="geometry"/>
+                </mxCell>
+                <mxCell id="253" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;strokeColor=#000000;fillColor=#FF3333;" vertex="1" parent="303">
+                    <mxGeometry x="200.9" y="93.76229508196722" width="102.89999999999999" height="57.13114754098361" as="geometry"/>
+                </mxCell>
+                <mxCell id="255" value="Comments" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#666666;strokeWidth=1;fillColor=#FFFFCC;fontColor=#33A64C;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="303">
+                    <mxGeometry x="73.5" y="161.31147540983608" width="333.2" height="26.885245901639344" as="geometry"/>
+                </mxCell>
+                <mxCell id="256" value="Ingredients" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#6C767D;strokeWidth=1;fillColor=#CCFF99;fontColor=#6C767D;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="303">
+                    <mxGeometry y="255.40983606557378" width="156.8" height="100.81967213114754" as="geometry"/>
+                </mxCell>
+                <mxCell id="257" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;strokeColor=#000000;fillColor=#FFFFFF;" vertex="1" parent="303">
+                    <mxGeometry x="200.9" y="262.13114754098365" width="102.89999999999999" height="110.90163934426229" as="geometry"/>
+                </mxCell>
+                <mxCell id="258" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;strokeColor=#000000;fillColor=#0000FF;" vertex="1" parent="303">
+                    <mxGeometry x="200.9" y="315.5655737704918" width="102.89999999999999" height="57.13114754098361" as="geometry"/>
+                </mxCell>
+                <mxCell id="259" value="Instructions" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#6C767D;strokeWidth=1;fillColor=#CCFF99;fontColor=#6C767D;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="303">
+                    <mxGeometry x="333.2" y="255.40983606557378" width="156.8" height="100.81967213114754" as="geometry"/>
+                </mxCell>
+                <mxCell id="260" value="Comments" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#666666;strokeWidth=1;fillColor=#FFFFCC;fontColor=#33A64C;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="303">
+                    <mxGeometry x="73.5" y="383.11475409836066" width="333.2" height="26.885245901639344" as="geometry"/>
+                </mxCell>
+                <mxCell id="261" value="Drink Name" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#666666;strokeWidth=1;fillColor=#E6FFCC;fontColor=#33A64C;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="303">
+                    <mxGeometry x="88.2" y="228.52459016393445" width="294" height="13.442622950819672" as="geometry"/>
+                </mxCell>
+                <mxCell id="283" value="" style="line;strokeWidth=2;html=1;fillColor=#CCE5FF;" vertex="1" parent="303">
+                    <mxGeometry x="19.6" y="208.36065573770495" width="441" height="6.721311475409836" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
