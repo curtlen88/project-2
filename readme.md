@@ -10,6 +10,11 @@ Pop your ingredient in the search bar and see what you find!
 
 DrinkTales will be a social drink recipe app where you can search for ingredients and get new cocktail recipies to make for yourself. You will be able to add recipies to your favorites page so they are stored for you anytime you want to pull them up again. You can leave comments on each cocktail recipe and see what what other people have to say about the recipe. 
 
+# API Selected
+* https://www.thecocktaildb.com/api.php
+![Getting Started](./imgs/APIresult.png)
+
+
 # Tech Used
 * HTML
 * Bootstrap
