@@ -27,28 +27,34 @@ DrinkTales will be a social drink reciepe app where you can search for ingrident
 * Crypto-JS
 
 
-# Wireframe
+# ERD 
 
+![Getting Started](./imgs/ERD.png)
+
+# Restful Routing Chart
+
+# Wireframes
+
+![Getting Started](./imgs/Homepage.png)
+![Getting Started](./imgs/Favoritespage.png)
+![Getting Started](./imgs/SignupPage.png)
+![Getting Started](./imgs/UserProfilePage.png)
 
 
 # MVP 
 
-* render and X-Wing and Tie Fighter shape to game screen.
-* Start button to begin the game
-* Ability to move the X-Wing
-* Have Tie Fighter Cross screen entering from right and exiting to the left 
-* Collision Detection stopping game play, prompting a "you died" message, and a restart button 
-* Timer showing how long the player has survived
-* Message displaying the player survived the Tie fighters long enough and has won with the option to contiue playing at current position
+* Homescreen diplays a random cocktail with the ingredients list and instuctions for making the cocktail
+* Search bar or bars that allow you to search the API by drink name or ingredient 
+* Sign up page that allows you to create an account,and gives you the ability to comment on and favorite recipies 
+* Update account page that allows you to update your user credentials
+* Favorites Page that shows all favorite recipes, gives the option to delete a favorite, and shows all comments on the recipe
 
-# Strech Goals
 
-* Make the Tie Fighters Move enter left of screen exit right of screen, and enter top of screen exit bottom of screen
-* Add a background to simulate motion
-* Add meteors that travel faster than the Tie Fighters
-* Add and option for a parody mode where the sprites for X-Wing are chicken legs in the shape of an X, and a Tie Fighter sprite that are bow ties in the shape of a Tie Fighter
+# Stretch Goals
 
-# Super-Strech Goals
+* Render an Image of the drink to the screen
+* Ability to like another persons quotes
+* Add a Chuck Norris API to show Chuck Norris quotes if you click a button under a cocktail recipe
+* Add a Dad Jokes API to show a dad joke if you click a button under a cocktail recipe
+* Add a Quotes API to show a quote if you click a button under a cocktail recipe
 
-* Give the X-Wing the ability to shoot and destroy Tie Fighters and asteroids in its path
-* Make the X-wing bullets chicken nuggets 
