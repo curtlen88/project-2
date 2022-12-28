@@ -62,11 +62,31 @@ app.get('/:name', async (req,res) => {
         const response = await axios.get(baseUrl,{ 
             headers: { "Accept-Encoding": "gzip,deflate,compress" } 
         })
+        res.render('home.ejs', {
+            drink: response.data
+        })
+        // res.json(response.data)
+        // console.log(baseUrl)
+        // res.send(response.data)      
+
+    } catch (error) {
+        console.log('🔥', error)
+    }
+})
+
+// random drink on homepage
+app.get('/', async (req,res) => {
+    try {
+        const baseUrl = `https://www.thecocktaildb.com/api/json/v1/1/random.php`
+        const response = await axios.get(baseUrl,{ 
+            headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+        })
         // res.render('home.ejs', {
-        //     drink: response.data
+        //     randomDrink: response.data,
+        //     name:req.params.name
         // })
         res.json(response.data)
-        console.log(baseUrl)
+        console.log(response.data.drinks)
         // res.send(response.data)      
 
     } catch (error) {
