@@ -4,6 +4,7 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 const db = require('./models')
 const crypto = require('crypto-js')
+const axios = require('axios')
 
 // app config
 const app = express()
@@ -51,6 +52,26 @@ app.use((req, res, next) => {
     // res.locals.myData = 'hello I am data'
     // invoke next to tell express to go to the next route or middle
     next()
+})
+
+
+//axois to hit API
+app.get('/:name', async (req,res) => {
+    try {
+        const baseUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${req.params.name}`
+        const response = await axios.get(baseUrl,{ 
+            headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+        })
+        // res.render('home.ejs', {
+        //     drink: response.data
+        // })
+        res.json(response.data)
+        console.log(baseUrl)
+        // res.send(response.data)      
+
+    } catch (error) {
+        console.log('🔥', error)
+    }
 })
 
 // routes and controllers

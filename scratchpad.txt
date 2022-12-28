@@ -1,2 +1,3 @@
-sequelize model:create --name user --attributes email:string,passwo
-rd:string
+sequelize model:create --name favoriteDrink --attributes name:string,ingredients:string,instructions:string,glassType:string,userID:integer
+
+sequelize model:create --name comment --attributes userName:string,comment:string,userID:integer,drinkId:integer

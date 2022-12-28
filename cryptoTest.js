@@ -29,3 +29,4 @@ console.log(hashedPassword);
 
 // COMPARE a string to our hash (user login)
 console.log(bcrypt.comaoreSync(userPassword, hashedPassword));
+
