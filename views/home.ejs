@@ -1,22 +1,23 @@
 <%- include('partials/header.ejs', { user }) %> 
 
-<h2>Welcome Home, user</h2>
+<h2 class="text-center">Home</h2>
 
-<div class="card text text-center " style="width: 18rem;">
-    <img src="axios get url from api" class="card-img-top text" alt="...">
+
+<div class="card text mx-auto text-center" style="width: 25rem; ">
+    <img src="<%=data[0].strDrinkThumb%>" class="card-img-top text" alt="<%=data[0].strDrink%>">
     <div class="card-body">
-      <h5 class="card-title">Drink Name</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <h5 class="card-title"><%=data[0].strDrink%></h5>
+      <p class="card-text">Glass Type: <%=data[0].strGlass%></p>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">An item</li>
-      <li class="list-group-item">A second item</li>
-      <li class="list-group-item">A third item</li>
+      <li class="list-group-item"><%=data[0].strInstructions%></li>
+      <li class="list-group-item">ingredients+ portions</li>
     </ul>
     <div class="card-body bg-warning">
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
+      <a href="#" class="card-link">Favorite</a>
+      <a href="#" class="card-link">Add Comment</a>
     </div>
 </div>
+
 
 <%- include('partials/footer.ejs') %>

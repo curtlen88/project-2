@@ -62,11 +62,11 @@ app.get('/:name', async (req,res) => {
         const response = await axios.get(baseUrl,{ 
             headers: { "Accept-Encoding": "gzip,deflate,compress" } 
         })
-        res.render('home.ejs', {
-            drink: response.data
-        })
-        // res.json(response.data)
-        // console.log(baseUrl)
+        // res.render('home.ejs', {
+        //     drink: response.data
+        // })
+        res.json(response.data)
+        console.log(baseUrl)
         // res.send(response.data)      
 
     } catch (error) {
@@ -81,12 +81,12 @@ app.get('/', async (req,res) => {
         const response = await axios.get(baseUrl,{ 
             headers: { "Accept-Encoding": "gzip,deflate,compress" } 
         })
-        // res.render('home.ejs', {
-        //     randomDrink: response.data,
-        //     name:req.params.name
-        // })
-        res.json(response.data)
         console.log(response.data.drinks)
+        res.render('home.ejs', {
+            data: response.data.drinks,
+            name:req.params.name
+        })
+        // res.json(response.data)
         // res.send(response.data)      
 
     } catch (error) {
