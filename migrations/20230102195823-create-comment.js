@@ -2,26 +2,23 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('favorites', {
+    await queryInterface.createTable('comments', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      userName: {
         type: Sequelize.STRING
       },
-      ingredients: {
+      comment: {
         type: Sequelize.STRING
       },
-      instructions: {
-        type: Sequelize.STRING
+      userId: {
+        type: Sequelize.INTEGER
       },
-      glassType: {
-        type: Sequelize.STRING
-      },
-      userID: {
+      drinkId: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -35,6 +32,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('favorites');
+    await queryInterface.dropTable('comments');
   }
 };

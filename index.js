@@ -56,23 +56,23 @@ app.use((req, res, next) => {
 
 
 //axois to hit API
-app.get('/:name', async (req,res) => {
-    try {
-        const baseUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${req.params.name}`
-        const response = await axios.get(baseUrl,{ 
-            headers: { "Accept-Encoding": "gzip,deflate,compress" } 
-        })
-        // res.render('home.ejs', {
-        //     drink: response.data
-        // })
-        res.json(response.data)
-        console.log(baseUrl)
-        // res.send(response.data)      
+// app.get('/:name', async (req,res) => {
+//     try {
+//         const baseUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${req.params.name}`
+//         const response = await axios.get(baseUrl,{ 
+//             headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+//         })
+//         // res.render('home.ejs', {
+//         //     drink: response.data
+//         // })
+//         res.json(response.data)
+//         console.log(baseUrl)
+//         // res.send(response.data)      
 
-    } catch (error) {
-        console.log('🔥', error)
-    }
-})
+//     } catch (error) {
+//         console.log('🔥', error)
+//     }
+// })
 
 // random drink on homepage
 app.get('/', async (req,res) => {
@@ -93,6 +93,40 @@ app.get('/', async (req,res) => {
         console.log('🔥', error)
     }
 })
+
+// POST /users/:id/favorites - receive the name of a drink and add it to the database
+app.post('/favorites', async (req, res) => {
+    // TODO: Get form data and add a new record to DB
+    try {
+      // create a new fave in the db
+      await db.favorite.findOrCreate({
+        where: {
+          name: req.body.name,
+          instructions: req.body.instructions,
+          glassType: req.body.glassType
+        }
+      })
+      // redirect to /faves to show the user their faves
+    } catch (err) {
+      console.log(err)
+    } 
+    res.redirect('/')
+  });
+
+// GET /favorites - return a page with favorited Pokemon
+app.get('/favorites', async (req, res) => {
+    try {
+      // TODO: Get all records from the DB and render to view
+      //READ function to find all favorite drinks
+      const favDrinks = await db.favorite.findAll()
+      res.render('./users/favorites.ejs', {
+        favDrinks: favDrinks
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  })
+
 
 // routes and controllers
 app.get('/', (req, res) => {

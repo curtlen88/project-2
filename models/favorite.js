@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     ingredients: DataTypes.STRING,
     instructions: DataTypes.STRING,
     glassType: DataTypes.STRING,
-    userID: DataTypes.INTEGER
+    userId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'favorite',
