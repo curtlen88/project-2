@@ -110,10 +110,10 @@ app.post('/favorites', async (req, res) => {
     } catch (err) {
       console.log(err)
     } 
-    res.redirect('/')
+    res.redirect('/favorites')
   });
 
-// GET /favorites - return a page with favorited Pokemon
+// GET /favorites - return a page with favorited drink
 app.get('/favorites', async (req, res) => {
     try {
       // TODO: Get all records from the DB and render to view
@@ -127,7 +127,21 @@ app.get('/favorites', async (req, res) => {
     }
   })
 
-
+// DELETE FAVS
+app.delete('/favorites/:id', async (req,res) =>{
+    console.log(req.params.id);
+    try {
+        const deleteFav = await db.favorite.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        res.redirect(req.get('referer'))
+    } catch (error) {
+        console.log(error)
+        res.status(500).send('server error on DELETE path 🔥')
+    }
+})
 // routes and controllers
 app.get('/', (req, res) => {
     console.log(res.locals.user)
