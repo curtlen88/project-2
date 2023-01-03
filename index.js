@@ -118,11 +118,13 @@ app.post('/favorites', async (req, res) => {
 // GET /favorites - return a page with favorited drink
 app.get('/favorites', async (req, res) => {
     try {
-      // TODO: Get all records from the DB and render to view
-      //READ function to find all favorite drinks
-      const favDrinks = await db.favorite.findAll()
+        //READ function to find all favorite drinks
+      const favDrinks = await db.favorite.findAll({
+        include: [db.comment]
+      })
+      console.log(favDrinks[0].comments[0].comment);
       res.render('./users/favorites.ejs', {
-        favDrinks: favDrinks
+        favDrinks: favDrinks,
       })
     } catch (error) {
       console.log(error)

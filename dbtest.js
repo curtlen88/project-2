@@ -3,9 +3,9 @@ const db = require('./models')
 // const createComment = async () => {
 //   try {
 //     const newComment = await db.comment.create({
-//       userName: 'Ada Lovelace',
-//       comment: 'So excited for this!',
-//       drinkId: 1
+//       userName: 'the dude',
+//       comment: '💀that carpet really brought together the room!',
+//       favoriteId: 3
 //     })
 //     console.log(newComment)
 //   } catch (err) {
@@ -15,16 +15,16 @@ const db = require('./models')
 
 // createComment()
 
-const readComments = async () => {
+  const readComment = async () => {
     try {
-      const comment = await db.favorite.findOne({
-        where: { id: 1},
+      const oneFav = await db.favorite.findOne({
+        where: { id: 3},
         include: [db.comment]
       })
-      console.log(article)
+      console.log(oneFav.comments)
     } catch (err) {
       console.log(err)
     }
   }
   
-  readComments()
+  readComment()

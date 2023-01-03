@@ -18,7 +18,7 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER
       },
-      drinkId: {
+      favoriteId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

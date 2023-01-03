@@ -8,11 +8,20 @@
       <div class="well">
         <h2><%= drink.name %></h2>
         <p><%= drink.glassType %></p>
+        <p><%= drink.instructions %></p>
+        
+        <%drink.comments.forEach(function(c){%>
+          <p>Comment: <%=c.comment%></p>
+          <p>User: <%=c.userName%></p>
+        <%})%>
 
-        <form method="POST" action="/users/favorites/<%= drink.id %>/?_method=DELETE">
+
+          <form method="POST" action="/users/favorites/<%= drink.id %>/?_method=DELETE">
           <button class="btn btn-primary" type="submit">Delete</button>
         </form>
 
       </div>
     <% }); %>
+
+
   </div>
