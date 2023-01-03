@@ -1,22 +1,30 @@
-
-
-
 const db = require('./models')
 
-// create some pokemon with async/await syntax
-async function createFav() {
-    try {
-        const newFav = await db.favorite.create({ name: 'Highball'})
-        console.log('the new drink is:', newFav)
-        const foundDrink = await db.favorite.findOne({
-            where: {
-                name: 'Highball'
-            }
-        })
-        console.log('the found drink is:', foundDrink)
-    }catch (err) {
-        console.log(err)
-    }
-}
+// const createComment = async () => {
+//   try {
+//     const newComment = await db.comment.create({
+//       userName: 'Ada Lovelace',
+//       comment: 'So excited for this!',
+//       drinkId: 1
+//     })
+//     console.log(newComment)
+//   } catch (err) {
+//     console.log(err)
+//   }
+// }
 
-createFav()
+// createComment()
+
+const readComments = async () => {
+    try {
+      const comment = await db.favorite.findOne({
+        where: { id: 1},
+        include: [db.comment]
+      })
+      console.log(article)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  
+  readComments()

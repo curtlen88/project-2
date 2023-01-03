@@ -55,24 +55,26 @@ app.use((req, res, next) => {
 })
 
 
-//axois to hit API
-// app.get('/:name', async (req,res) => {
-//     try {
-//         const baseUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${req.params.name}`
-//         const response = await axios.get(baseUrl,{ 
-//             headers: { "Accept-Encoding": "gzip,deflate,compress" } 
-//         })
-//         // res.render('home.ejs', {
-//         //     drink: response.data
-//         // })
-//         res.json(response.data)
-//         console.log(baseUrl)
-//         // res.send(response.data)      
+// axois to hit API
+app.get('/results', async (req,res) => {
+    try {
+        let name = req.query.search
+        const baseUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
+        const response = await axios.get(baseUrl,{ 
+            headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+        })
+        res.render('results.ejs', {
+            user: res.locals.user,
+            results: response.data.drinks[0]
+        })
+        // res.json(response.data)
+        // console.log(baseUrl)
+        // res.send(response.data)      
 
-//     } catch (error) {
-//         console.log('🔥', error)
-//     }
-// })
+    } catch (error) {
+        console.log('🔥', error)
+    }
+})
 
 // random drink on homepage
 app.get('/', async (req,res) => {
@@ -127,21 +129,8 @@ app.get('/favorites', async (req, res) => {
     }
   })
 
-// DELETE FAVS
-app.delete('/favorites/:id', async (req,res) =>{
-    console.log(req.params.id);
-    try {
-        const deleteFav = await db.favorite.destroy({
-            where: {
-                id: req.params.id
-            }
-        })
-        res.redirect(req.get('referer'))
-    } catch (error) {
-        console.log(error)
-        res.status(500).send('server error on DELETE path 🔥')
-    }
-})
+
+
 // routes and controllers
 app.get('/', (req, res) => {
     console.log(res.locals.user)

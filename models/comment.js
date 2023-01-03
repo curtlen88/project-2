@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       models.comment.belongsTo(models.user)
+      models.comment.belongsTo(models.favorite)
     }
   }
   comment.init({

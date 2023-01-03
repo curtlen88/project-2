@@ -110,5 +110,21 @@ router.get('/profile', (req, res) => {
     }
 })
 
+// DELETE FAVS
+router.post('/favorites/:id', async (req,res) =>{
+    console.log(req.params.id)
+    try {
+        await db.favorite.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        res.redirect(req.get('referer'))
+    } catch (error) {
+        console.log(error)
+        res.status(500).send('server error on DELETE path 🔥')
+    }
+})
+
 // export the router
 module.exports = router

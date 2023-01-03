@@ -9,7 +9,7 @@
         <h2><%= drink.name %></h2>
         <p><%= drink.glassType %></p>
 
-        <form method="DELETE" action="/users/favorites/<%= drink.id %>/?_method=DELETE">
+        <form method="POST" action="/users/favorites/<%= drink.id %>/?_method=DELETE">
           <button class="btn btn-primary" type="submit">Delete</button>
         </form>
 
