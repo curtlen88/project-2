@@ -1,3 +1,6 @@
 sequelize model:create --name favorite --attributes name:string,ingredients:string,instructions:string,glassType:string,userId:integer
 
 sequelize model:create --name comment --attributes userName:string,comment:string,userId:integer,favoriteId:integer
+
+  models.comment.belongsTo(models.user)
+      models.comment.belongsTo(models.favorite)

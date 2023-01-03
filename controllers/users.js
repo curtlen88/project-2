@@ -126,5 +126,21 @@ router.post('/favorites/:id', async (req,res) =>{
     }
 })
 
+// add a comment
+router.post('/favorites/:id/comment', async (req,res)=>{
+    try {
+        const newComment = await db.comment.create({
+          userName: req.body.userName,
+          comment: req.body.comment,
+          favoriteId: req.params.id,
+          userId:req.cookies.name
+        })
+        console.log(newComment)
+        res.redirect('/favorites')
+      } catch (err) {
+        console.log(err)
+      }
+})
+
 // export the router
 module.exports = router
