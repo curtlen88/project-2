@@ -83,7 +83,6 @@ app.get('/', async (req,res) => {
         const response = await axios.get(baseUrl,{ 
             headers: { "Accept-Encoding": "gzip,deflate,compress" } 
         })
-        console.log(response.data.drinks)
         res.render('home.ejs', {
             data: response.data.drinks,
             name:req.params.name
@@ -106,7 +105,7 @@ app.post('/favorites', async (req, res) => {
           name: req.body.name,
           instructions: req.body.instructions,
           glassType: req.body.glassType,
-          image: req.body.image
+          image: req.body.image,
         }
       })
       // redirect to /faves to show the user their faves
