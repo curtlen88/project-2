@@ -32,7 +32,6 @@ app.use(async (req, res, next) => {
             // set the logged in user to be null for conditional rendering
             res.locals.user = null
         }
-
         // move on the the next middleware/route
         next()
     } catch (err) {
@@ -99,13 +98,14 @@ app.get('/', async (req,res) => {
 app.post('/favorites', async (req, res) => {
     // TODO: Get form data and add a new record to DB
     try {
-      // create a new fave in the db
       await db.favorite.findOrCreate({
         where: {
           name: req.body.name,
           instructions: req.body.instructions,
           glassType: req.body.glassType,
           image: req.body.image,
+          userId: res.locals.user.id
+          // ingredients: req.body.ingredients
         }
       })
       // redirect to /faves to show the user their faves

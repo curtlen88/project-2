@@ -133,7 +133,7 @@ router.post('/favorites/:id/comment', async (req,res)=>{
           userName: req.body.userName,
           comment: req.body.comment,
           favoriteId: req.params.id,
-          userId:req.cookies.userid
+          userId:res.locals.user.id
         })
         console.log(newComment)
         res.redirect('/favorites')

@@ -7,3 +7,6 @@ models.comment.belongsTo(models.favorite)
 
       models.favorite.belongsTo(models.user)
       models.favorite.hasMany(models.comment)
+
+
+       <input hidden type="text" name="ingredients" value="<%= drink[`strMeasure${i}`] %> of <%= drink[`strIngredient${i}`] %>">
