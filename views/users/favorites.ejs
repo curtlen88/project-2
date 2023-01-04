@@ -1,38 +1,36 @@
 <%- include('../partials/header', { user }) %>
 
-<div class="container">
-    <h1 class="text-center">My Favorites</h1>
-  
+<h1 class="text-center">My Favorites</h1>
+
+<div class="vh-min-100 d-flex flex-wrap justify-content-around">
     <% favDrinks.forEach(function(drink) { %>
-      <div class="well">
-        <h2><%= drink.name %></h2>
-        <p><%= drink.glassType %></p>
-        <p><%= drink.instructions %></p>
-        
-        <form action="/users/favorites/<%=drink.id%>/comment" method="POST">
-          <div class="form-group">
-            
-            <label for="userName">User Name:</label>
-        
-            <input id="userName" type="text" name="userName"  placeholder="name"/>
-        
-            <label for="comment">Comment:</label>
-        
-            <input id="comment" type="text" name="comment"  placeholder="your comment here"/>
-        
-            <button class="btn btn-warning" type="submit">Submit</button>
-          </div>
-
-        <%drink.comments.forEach(function(c){%>
-          <p>User: <%=c.userName%> Comment: <%=c.comment%></p>
-        <%})%>
-
-        <button class="btn btn-warning" type="submit">Delete</button>
-        <form method="POST" action="/users/favorites/<%= drink.id %>/?_method=DELETE">
+      <div class="card" style="width: 18rem;">
+        <img src="<%=drink.image%>" class="card-img-top" alt="<%=drink.name%>">
+        <div class="card-body text-center">
+          <h5 class="card-title"><%= drink.name %></h5>
+          <p class="card-text">Glass Type: <%= drink.glassType %></p>
+        </div>
+        <ul class="list-group list-group-flush text-center">
+          <li class="list-group-item">Instructions: <%= drink.instructions %></li>
+          <div class="card-body text-center bg-warning">
+            <form class="bg-warning" action="/users/favorites/<%=drink.id%>/comment" method="POST">
+              <div class="form-group text-center">
+                <label for="userName">User Name:</label>
+                <input id="userName" type="text" name="userName" required placeholder="name"/>
+                <label for="comment">Comment:</label>
+                <input id="comment" type="text" name="comment" required placeholder="your comment here"/>
+                <button class="btn btn-outline-dark" style="margin: 5px;" type="submit">Submit</button>
+              </div>
+            </form>  
+              <%drink.comments.forEach(function(c){%>
+                <li class="list-group-item">User: <%=c.userName%> Comment: <%=c.comment%></li>
+              <%})%>    
+        </ul>
+        <form class="d-flex justify-content-around" method="POST" action="/users/favorites/<%= drink.id %>/?_method=DELETE">
+            <button class="btn btn-warning" style="margin: 5px;" type="submit">Delete</button>
         </form>
-
       </div>
     <% }); %>
+</div>
 
-
-  </div>
+<%- include('../partials/footer', { user }) %>

@@ -105,7 +105,8 @@ app.post('/favorites', async (req, res) => {
         where: {
           name: req.body.name,
           instructions: req.body.instructions,
-          glassType: req.body.glassType
+          glassType: req.body.glassType,
+          image: req.body.image
         }
       })
       // redirect to /faves to show the user their faves
@@ -122,7 +123,7 @@ app.get('/favorites', async (req, res) => {
       const favDrinks = await db.favorite.findAll({
         include: [db.comment]
       })
-      console.log(favDrinks[0].comments[0].comment)
+      // console.log(favDrinks[0].comments[0].comment)
       res.render('./users/favorites.ejs', {
         favDrinks: favDrinks,
       })

@@ -18,6 +18,9 @@ module.exports = {
       instructions: {
         type: Sequelize.STRING
       },
+      image: {
+        type: Sequelize.STRING
+      },
       glassType: {
         type: Sequelize.STRING
       },

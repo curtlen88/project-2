@@ -1,5 +1,15 @@
 <%- include('../partials/header', { user }) %>
 
-<h3>Hey, <%= user.email %> thanks for logging in to the app!</h3>
+<h3 class="text-center mt-4">Update your information</h3>
+
+<form class="text-center mt-4" action="/users" method="POST">
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required />
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" required/>
+
+    <button class="btn btn-warning" type="submit">Sign Up</button>
+</form>
 
 <%- include('../partials/footer') %>
