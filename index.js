@@ -147,7 +147,7 @@ app.get('/users/favorites/:name', async (req,res) =>{
         const response = await axios.get(baseUrl,{ 
             headers: { "Accept-Encoding": "gzip,deflate,compress" } 
           })
-          const favDrinks = await db.favorite.findAll({
+        const favDrinks = await db.favorite.findAll({
             include: [db.comment]
           })
         res.render('./users/details.ejs', {
