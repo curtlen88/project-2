@@ -1,0 +1,25 @@
+<%- include('../partials/header.ejs', { user }) %> 
+
+<h2 class="text-center"><%=data[0].strDrink%> Details</h2>
+
+<div class="container vh-min-100">
+  <div class="card text mx-auto text-center" style="width: 25rem;">
+      <img src="<%=data[0].strDrinkThumb%>" class="card-img-top text" alt="<%=data[0].strDrink%>">
+      <div class="card-body">
+        <h3 class="card-text"><%=data[0].strDrink%></h3>
+        <p class="card-text">Glass Type: <%=data[0].strGlass%></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%=data[0].strInstructions%></li>
+        <% data.forEach((drink) => { %>
+          <% for (let i = 1; i <= 15; i++) { %>
+            <% if (drink[`strIngredient${i}`] && drink[`strMeasure${i}`]) { %>
+              <li class="list-group-item"><%= drink[`strMeasure${i}`] %> of <%= drink[`strIngredient${i}`] %></li>
+            <% } %>
+          <% } %>
+        <% }) %>
+      </ul>
+  </div>
+</div>
+
+<%- include('../partials/footer.ejs', { user }) %>

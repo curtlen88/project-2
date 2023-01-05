@@ -33,4 +33,11 @@
     <% }); %>
 </div>
 
+<% favDrinks.forEach(function(drink) { %>
+<form method="GET" action="/users/favorites/<%= drink.name %>">
+  <input hidden type="text" name="name" value="<%= drink.name %>">
+  <button class="btn btn-outline-dark" type="submit"><%= drink.name %></button>
+</form>
+<% }); %>
+
 <%- include('../partials/footer', { user }) %>

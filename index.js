@@ -131,7 +131,22 @@ app.get('/favorites', async (req, res) => {
     }
   })
 
-
+// GET /users/favorites/:name - return a page with the favorite drink details( instructions, ingredients etc)
+app.get('/users/favorites/:name', async (req,res) =>{
+  try {
+    let name = req.params.name
+        const baseUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
+        const response = await axios.get(baseUrl,{ 
+            headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+        })
+        res.render('./users/details.ejs', {
+            user: res.locals.user,
+            data: response.data.drinks
+        })
+  } catch (error) {
+    console.log(error)
+  }
+})
 
 // routes and controllers
 app.get('/', (req, res) => {
