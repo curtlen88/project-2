@@ -1,20 +1,24 @@
 sequelize model:create --name favorite --attributes name:string,ingredients:string,instructions:string,image:string,glassType:string,userId:integer
 
 sequelize model:create --name comment --attributes userName:string,comment:string,userId:integer,favoriteId:integer
+    
 
-models.comment.belongsTo(models.user)
-models.comment.belongsTo(models.favorite)
-
-      models.favorite.belongsTo(models.user)
-      models.favorite.hasMany(models.comment)
+           
 
 
-       <input hidden type="text" name="ingredients" value="<%= drink[`strMeasure${i}`] %> of <%= drink[`strIngredient${i}`] %>">
-
-
-        <% for (let i = 1; i <= 15; i++) { %>
-                <% if (drink[`strIngredient${i}`] && drink[`strMeasure${i}`]) { %>
-                  <li class="list-group-item"><%= drink[`strMeasure${i}`] %> of <%= drink[`strIngredient${i}`] %></li>
-                <% } %>
-              <% } %>
-            <% }) %>
+<div class="vh-min-100 d-flex flex-wrap justify-content-around" >
+    <% favDrinks.forEach(function(drink) { %>
+      <div class="card" style="width: 18rem;">
+        <img src="<%=drink.image%>" class="card-img" alt="<%=drink.name%>">
+        <div class="card-img-overlay text-center">
+          <form method="GET" action="/users/favorites/<%= drink.name %>">
+            <input hidden type="text" name="name" value="<%= drink.name %>">
+            <button class="btn btn-outline-warning"" type="submit"><%= drink.name %></button>
+          </form>
+          <form class="border border-alert" method="POST" action="/users/favorites/<%= drink.id %>/?_method=DELETE">
+              <button class="btn btn-outline-warning text-center" style="margin: 5px;" type="submit">Delete</button>
+          </form>
+        </div>
+      </div>
+    <% }); %>
+</div>

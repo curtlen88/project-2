@@ -30,3 +30,17 @@
     </div>
   <% }); %>
 </div>
+
+<div class="vh-min-100 d-flex flex-wrap justify-content-around" >
+  <% data.forEach(function(drink) { %>
+    <div class="card" style="width: 18rem;">
+      <img src="<%=drink.strDrinkThumb%>" class="card-img" alt="<%=data[0].strDrink%>">
+      <div class="card-img-overlay text-center">
+        <form method="GET" action="/users/favorites/<%= data[0].strDrink %>">
+          <input hidden type="text" name="name" value="<%= data[0].strDrink %>">
+          <button class="btn btn-outline-warning"" type="submit"><%=data[0].strDrink %></button>
+        </form>
+      </div>
+    </div>
+  <% }); %>
+</div>

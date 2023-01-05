@@ -136,10 +136,10 @@ router.post('/favorites/:id/comment', async (req,res)=>{
           userId:res.locals.user.id
         })
         console.log(newComment)
-        res.redirect('/favorites')
-      } catch (err) {
+        res.redirect(req.get('referer'))
+    } catch (err) {
         console.log(err)
-      }
+    }
 })
 
 // export the router

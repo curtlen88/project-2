@@ -122,8 +122,7 @@ app.post('/favorites', async (req, res) => {
 // GET /favorites - return a page with favorited drink
 app.get('/favorites', async (req, res) => {
     try {
-    
-    //READ function to find all favorite    drinks
+    //READ function to find all favorite drinks
       const favDrinks = await db.favorite.findAll({
         where: {
           userId: res.locals.user.id
@@ -148,13 +147,17 @@ app.get('/users/favorites/:name', async (req,res) =>{
             headers: { "Accept-Encoding": "gzip,deflate,compress" } 
           })
         const favDrinks = await db.favorite.findAll({
-            include: [db.comment]
+          where: {
+            name: req.params.name
+          },
+          include: [db.comment]
           })
         res.render('./users/details.ejs', {
             user: res.locals.user,
             data: response.data.drinks,
             favDrinks: favDrinks
-        })
+          })
+          console.log(favDrinks.id);
   } catch (error) {
     console.log(error)
   }

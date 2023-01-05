@@ -5,12 +5,14 @@
 <div class="container vh-min-100">
   <div class="card text mx-auto text-center" style="width: 25rem;">
       <img src="<%=data[0].strDrinkThumb%>" class="card-img-top text" alt="<%=data[0].strDrink%>">
-      <div class="card-body">
+    <div class="card-body bg-warning">
         <h3 class="card-text"><%=data[0].strDrink%></h3>
         <p class="card-text">Glass Type: <%=data[0].strGlass%></p>
-      </div>
-      <ul class="list-group list-group-flush">
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item text-warning bg-dark">Instructions</li>
         <li class="list-group-item"><%=data[0].strInstructions%></li>
+        <li class="list-group-item text-warning bg-dark">Ingredients</li>
         <% data.forEach((drink) => { %>
           <% for (let i = 1; i <= 15; i++) { %>
             <% if (drink[`strIngredient${i}`] && drink[`strMeasure${i}`]) { %>
@@ -18,42 +20,33 @@
             <% } %>
           <% } %>
         <% }) %>
-      </ul>
-      
+    </ul>
+    <ul class="list-group list-group-flush text-center">
+        <div class="card-body text-center bg-warning">
+          <form class="bg-warning" action="/users/favorites/<%=favDrinks[0].id%>/comment" method="POST">
+            <div class="form-group text-center">
+                <ul>
+                  <label for="userName">User Name:</label>
+                  <input id="userName" type="text" name="userName" required placeholder="name"/>
+                </ul>
+                <ul class="mt-2">
+                  <label for="comment">Comment: </label>
+                  <input id="comment" type="text" name="comment" required placeholder="your comment here"/>
+                </ul>
+              <button class="btn btn-outline-dark mt-3 mb-3" type="submit">Submit</button>
+              <li class="list-group-item text-warning bg-dark">Comments</li>
+              <%favDrinks[0].comments.forEach(function(c){%>
+                <li class="list-group-item">User: <%=c.userName%></li>
+                <li class="list-group-item">Comment: <%=c.comment%></li>
+              <%})%> 
+            </div>
+          </form>  
+        </div>       
+    </ul>
   </div>
 </div>
 
-<div class="vh-min-100 d-flex flex-wrap justify-content-around">
-    <% favDrinks.forEach(function(drink) { %>
-      <div class="card" style="width: 18rem;">
-        <img src="<%=drink.image%>" class="card-img-top" alt="<%=drink.name%>">
-        <div class="card-body text-center">
-          <form method="GET" action="/users/favorites/<%= drink.name %>">
-            <input hidden type="text" name="name" value="<%= drink.name %>">
-            <button class="btn btn-warning" type="submit"><%= drink.name %></button>
-          </form>
-        </div>
-        <ul class="list-group list-group-flush text-center">
-          <div class="card-body text-center bg-warning">
-            <form class="bg-warning" action="/users/favorites/<%=drink.id%>/comment" method="POST">
-              <div class="form-group text-center">
-                <label for="userName">User Name:</label>
-                <input id="userName" type="text" name="userName" required placeholder="name"/>
-                <label for="comment">Comment:</label>
-                <input id="comment" type="text" name="comment" required placeholder="your comment here"/>
-                <button class="btn btn-outline-dark" style="margin: 5px;" type="submit">Submit</button>
-              </div>
-            </form>  
-              <%drink.comments.forEach(function(c){%>
-                <li class="list-group-item">User: <%=c.userName%> Comment: <%=c.comment%></li>
-              <%})%>    
-        </ul>
-        <form class="d-flex justify-content-around" method="POST" action="/users/favorites/<%= drink.id %>/?_method=DELETE">
-            <button class="btn btn-warning" style="margin: 5px;" type="submit">Delete</button>
-        </form>
-      </div>
-    <% }); %>
-</div>
+
 
 
 <%- include('../partials/footer.ejs', { user }) %>
