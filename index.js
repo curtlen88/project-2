@@ -64,7 +64,7 @@ app.get('/results', async (req,res) => {
         })
         res.render('results.ejs', {
             user: res.locals.user,
-            results: response.data.drinks[0]
+            data: response.data.drinks
         })
         // res.json(response.data)
         // console.log(baseUrl)
@@ -98,28 +98,36 @@ app.get('/', async (req,res) => {
 app.post('/favorites', async (req, res) => {
     // TODO: Get form data and add a new record to DB
     try {
-      await db.favorite.findOrCreate({
-        where: {
-          name: req.body.name,
-          instructions: req.body.instructions,
-          glassType: req.body.glassType,
-          image: req.body.image,
-          userId: res.locals.user.id
-          // ingredients: req.body.ingredients
-        }
-      })
+      if (req.cookies.userId) {
+        await db.favorite.findOrCreate({
+          where: {
+            name: req.body.name,
+            instructions: req.body.instructions,
+            glassType: req.body.glassType,
+            image: req.body.image,
+            userId: res.locals.user.id
+            // ingredients: req.body.ingredients
+          }
+        })
+      }else {
+        res.redirect('/users/login')
+      }
       // redirect to /faves to show the user their faves
+      res.redirect('/favorites')
     } catch (err) {
       console.log(err)
     } 
-    res.redirect('/favorites')
   });
 
 // GET /favorites - return a page with favorited drink
 app.get('/favorites', async (req, res) => {
     try {
+    
     //READ function to find all favorite    drinks
       const favDrinks = await db.favorite.findAll({
+        where: {
+          userId: res.locals.user.id
+        },
         include: [db.comment]
       })
       // console.log(favDrinks[0].comments[0].comment)
@@ -138,10 +146,14 @@ app.get('/users/favorites/:name', async (req,res) =>{
         const baseUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
         const response = await axios.get(baseUrl,{ 
             headers: { "Accept-Encoding": "gzip,deflate,compress" } 
-        })
+          })
+          const favDrinks = await db.favorite.findAll({
+            include: [db.comment]
+          })
         res.render('./users/details.ejs', {
             user: res.locals.user,
-            data: response.data.drinks
+            data: response.data.drinks,
+            favDrinks: favDrinks
         })
   } catch (error) {
     console.log(error)

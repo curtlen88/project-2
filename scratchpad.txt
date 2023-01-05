@@ -10,3 +10,11 @@ models.comment.belongsTo(models.favorite)
 
 
        <input hidden type="text" name="ingredients" value="<%= drink[`strMeasure${i}`] %> of <%= drink[`strIngredient${i}`] %>">
+
+
+        <% for (let i = 1; i <= 15; i++) { %>
+                <% if (drink[`strIngredient${i}`] && drink[`strMeasure${i}`]) { %>
+                  <li class="list-group-item"><%= drink[`strMeasure${i}`] %> of <%= drink[`strIngredient${i}`] %></li>
+                <% } %>
+              <% } %>
+            <% }) %>

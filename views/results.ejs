@@ -1,8 +1,32 @@
 <%- include('partials/header.ejs', { user }) %> 
 
-<div class="container">
-    <h1 class="text-center">Search Results</h1>
+<h1 class="text-center">Search Results</h1>
 
-    <div class="well">
-      <h2><%= results.strDrink %></h2>    
+<div class="vh-min-100 d-flex flex-wrap justify-content-around">
+  <% data.forEach(function(drink) { %>
+    <div class="card" style="width: 18rem;">
+      <img src="<%=drink.strDrinkThumb%>" class="card-img-top" alt="<%=drink.strDrink%>">
+      <div class="card-body text-center">
+        <h3 class="card-text"><%=data[0].strDrink%></h3>
+        <p class="card-text">Glass Type: <%=data[0].strGlass%></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%=data[0].strInstructions%></li>
+          <% for (let i = 1; i <= 15; i++) { %>
+            <% if (drink[`strIngredient${i}`] && drink[`strMeasure${i}`]) { %>
+              <li class="list-group-item"><%= drink[`strMeasure${i}`] %> of <%= drink[`strIngredient${i}`] %></li>
+            <% } %>
+          <% } %>
+      </ul>
+      <div class="card-body bg-warning">
+        <form method="POST" action="/favorites">
+          <input hidden type="text" name="name" value="<%= data[0].strDrink %>">
+          <input hidden type="text" name="glassType" value="<%= data[0].strGlass %>">
+          <input hidden type="text" name="instructions" value="<%= data[0].strInstructions %>">
+          <input hidden type="text" name="image" value="<%=data[0].strDrinkThumb%>">
+          <button class="btn btn-outline-dark" type="submit">Favorite</button>
+        </form>
+      </div>
     </div>
+  <% }); %>
+</div>

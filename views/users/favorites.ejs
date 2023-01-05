@@ -7,37 +7,16 @@
       <div class="card" style="width: 18rem;">
         <img src="<%=drink.image%>" class="card-img-top" alt="<%=drink.name%>">
         <div class="card-body text-center">
-          <h5 class="card-title"><%= drink.name %></h5>
-          <p class="card-text">Glass Type: <%= drink.glassType %></p>
+          <form method="GET" action="/users/favorites/<%= drink.name %>">
+            <input hidden type="text" name="name" value="<%= drink.name %>">
+            <button class="btn btn-warning" type="submit"><%= drink.name %></button>
+          </form>
         </div>
-        <ul class="list-group list-group-flush text-center">
-          <li class="list-group-item">Instructions: <%= drink.instructions %></li>
-          <div class="card-body text-center bg-warning">
-            <form class="bg-warning" action="/users/favorites/<%=drink.id%>/comment" method="POST">
-              <div class="form-group text-center">
-                <label for="userName">User Name:</label>
-                <input id="userName" type="text" name="userName" required placeholder="name"/>
-                <label for="comment">Comment:</label>
-                <input id="comment" type="text" name="comment" required placeholder="your comment here"/>
-                <button class="btn btn-outline-dark" style="margin: 5px;" type="submit">Submit</button>
-              </div>
-            </form>  
-              <%drink.comments.forEach(function(c){%>
-                <li class="list-group-item">User: <%=c.userName%> Comment: <%=c.comment%></li>
-              <%})%>    
-        </ul>
         <form class="d-flex justify-content-around" method="POST" action="/users/favorites/<%= drink.id %>/?_method=DELETE">
             <button class="btn btn-warning" style="margin: 5px;" type="submit">Delete</button>
         </form>
       </div>
     <% }); %>
 </div>
-
-<% favDrinks.forEach(function(drink) { %>
-<form method="GET" action="/users/favorites/<%= drink.name %>">
-  <input hidden type="text" name="name" value="<%= drink.name %>">
-  <button class="btn btn-outline-dark" type="submit"><%= drink.name %></button>
-</form>
-<% }); %>
 
 <%- include('../partials/footer', { user }) %>
