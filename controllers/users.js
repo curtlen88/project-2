@@ -99,7 +99,7 @@ router.get('/logout', (req, res) => {
 })
 
 // GET /users/profile -- show the user their profile page
-router.get('/profile', (req, res) => {
+router.get('/profile', async (req, res) => {
     // if the user is not logged in -- they are not allowed to be here
     if (!res.locals.user) {
         res.redirect('/users/login?message=You must authenticate before you are authorized to view this resource!')
@@ -110,8 +110,22 @@ router.get('/profile', (req, res) => {
     }
 })
 
+router.put('/:id', async (req,res) => {
+    try {
+        const passwordChange = await db.user.update({ 
+            password: bcrypt.hashSync(req.body.password, 12) }, 
+            {where: {
+                email: req.body.email
+            }
+        })  
+        res.redirect('/')
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 // DELETE FAVS
-router.post('/favorites/:id', async (req,res) =>{
+router.delete('/favorites/:id', async (req,res) =>{
     console.log(req.params.id)
     try {
         await db.favorite.destroy({

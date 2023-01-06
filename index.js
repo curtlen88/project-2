@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser')
 const db = require('./models')
 const crypto = require('crypto-js')
 const axios = require('axios')
+const methodOverride = require('method-override');
 
 // app config
 const app = express()
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 8000
 app.set('view engine', 'ejs')
 // parse request bodies from html forms
 app.use(express.urlencoded({ extended: false }))
+app.use(methodOverride('_method'));
 // tell express to parse incoming cookies
 app.use(cookieParser())
 
