@@ -6,7 +6,6 @@ const db = require('./models')
 const crypto = require('crypto-js')
 const axios = require('axios')
 const methodOverride = require('method-override');
-
 // app config
 const app = express()
 const PORT = process.env.PORT || 8000
@@ -154,12 +153,12 @@ app.get('/users/favorites/:name', async (req,res) =>{
           },
           include: [db.comment]
           })
+          console.log(favDrinks, 'this it the spot');
         res.render('./users/details.ejs', {
             user: res.locals.user,
             data: response.data.drinks,
             favDrinks: favDrinks
           })
-          console.log(favDrinks.id);
   } catch (error) {
     console.log(error)
   }

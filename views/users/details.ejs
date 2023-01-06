@@ -23,22 +23,34 @@
     </ul>
     <ul class="list-group list-group-flush text-center">
         <div class="card-body text-center bg-warning">
-          <form class="bg-warning" action="/users/favorites/<%=favDrinks[0].id%>/comment" method="POST">
-            <div class="form-group text-center">
-                <ul>
-                  <label for="userName">User Name:</label>
-                  <input id="userName" type="text" name="userName" required placeholder="name"/>
-                </ul>
-                <ul class="mt-2">
-                  <label for="comment">Comment: </label>
-                  <input id="comment" type="text" name="comment" required placeholder="your comment here"/>
-                </ul>
-              <button class="btn btn-outline-dark mt-3 mb-3" type="submit">Submit</button>
-              <li class="list-group-item text-warning bg-dark">Comments</li>
-              <%favDrinks[0].comments.forEach(function(c){%>
-                <li class="list-group-item">User: <%=c.userName%></li>
-                <li class="list-group-item">Comment: <%=c.comment%></li>
-              <%})%> 
+          <%if(favDrinks.length > 0){%>
+              <form class="bg-warning" action="/users/favorites/<%=favDrinks[0].id%>/comment" method="POST">
+              <div class="form-group text-center">
+                  <ul>
+                    <label for="userName">User Name:</label>
+                    <input id="userName" type="text" name="userName" required placeholder="name"/>
+                  </ul>
+                  <ul class="mt-2">
+                    <label for="comment">Comment: </label>
+                    <input id="comment" type="text" name="comment" required placeholder="your comment here"/>
+                  </ul>
+                <button class="btn btn-outline-dark mt-3 mb-3" type="submit">Submit</button>
+                <li class="list-group-item text-warning bg-dark">Comments</li>
+                <%favDrinks[0].comments.forEach(function(c){%>
+                  <li class="list-group-item">User: <%=c.userName%></li>
+                  <li class="list-group-item">Comment: <%=c.comment%></li>
+                <%})%> 
+              <%} else {%>
+                <div class="card-body bg-warning text-center">
+                  <form method="POST" action="/favorites">
+                    <input hidden type="text" name="name" value="<%= data[0].strDrink %>">
+                    <input hidden type="text" name="glassType" value="<%= data[0].strGlass %>">
+                    <input hidden type="text" name="instructions" value="<%= data[0].strInstructions %>">
+                    <input hidden type="text" name="image" value="<%=data[0].strDrinkThumb%>">
+                    <button class="btn btn-outline-dark" type="submit">Favorite</button>
+                  </form>
+                </div>
+              <%}%>
             </div>
           </form>  
         </div>       

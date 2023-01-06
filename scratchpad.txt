@@ -22,3 +22,35 @@ sequelize model:create --name comment --attributes userName:string,comment:strin
       </div>
     <% }); %>
 </div>
+
+
+
+
+<div class="vh-min-100 d-flex flex-wrap justify-content-around">
+  <% data.forEach(function(drink) { %>
+    <div class="card" style="width: 18rem;">
+      <img src="<%=drink.strDrinkThumb%>" class="card-img-top" alt="<%=drink.strDrink%>">
+      <div class="card-body text-center">
+        <h3 class="card-text"><%=data[0].strDrink%></h3>
+        <p class="card-text">Glass Type: <%=data[0].strGlass%></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%=data[0].strInstructions%></li>
+          <% for (let i = 1; i <= 15; i++) { %>
+            <% if (drink[`strIngredient${i}`] && drink[`strMeasure${i}`]) { %>
+              <li class="list-group-item"><%= drink[`strMeasure${i}`] %> of <%= drink[`strIngredient${i}`] %></li>
+            <% } %>
+          <% } %>
+      </ul>
+      <div class="card-body bg-warning text-center">
+        <form method="POST" action="/favorites">
+          <input hidden type="text" name="name" value="<%= drink.strDrink %>">
+          <input hidden type="text" name="glassType" value="<%= drink.strGlass %>">
+          <input hidden type="text" name="instructions" value="<%= drink.strInstructions %>">
+          <input hidden type="text" name="image" value="<%=drink.strDrinkThumb%>">
+          <button class="btn btn-outline-dark" type="submit">Favorite</button>
+        </form>
+      </div>
+    </div>
+  <% }); %>
+</div>
