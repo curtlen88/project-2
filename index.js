@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'));
 // tell express to parse incoming cookies
 app.use(cookieParser())
+app.use(express.static('public'))
 
 // custom auth middleware that checks the cookies for a user id
 // and it finds one, look up the user in the db

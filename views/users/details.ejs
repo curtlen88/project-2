@@ -1,6 +1,6 @@
 <%- include('../partials/header.ejs', { user }) %> 
 
-<h2 class="text-center"><%=data[0].strDrink%> Details</h2>
+<h2 class="text-center bg-dark text-light p-3"><%=data[0].strDrink%> Details</h2>
 
 <div class="container vh-min-100">
   <div class="card text mx-auto text-center" style="width: 25rem;">
@@ -23,7 +23,8 @@
     </ul>
     <ul class="list-group list-group-flush text-center">
         <div class="card-body text-center bg-warning">
-          <%if(favDrinks.length > 0){%>
+          
+          <% if(favDrinks.length > 0){%>
               <form class="bg-warning" action="/users/favorites/<%=favDrinks[0].id%>/comment" method="POST">
               <div class="form-group text-center">
                   <ul>
@@ -51,7 +52,8 @@
                   </form>
                 </div>
               <%}%>
-            </div>
+             
+              </div>
           </form>  
         </div>       
     </ul>
