@@ -6,14 +6,14 @@
     <p class="text-center"><%= message %></p>
 <% } %>
 
-<form class="text-center mt-4" action="/users/login" method="POST">
+<form class="text-center" action="/users/login" method="POST">
     <label for="email">Email:</label>
-    <input type="email" name="email" id="email" required />
-
+    <input class="m-2" type="email" name="email" id="email" required />
+<br>
     <label for="password">Password:</label>
     <input type="password" name="password" id="password" required/>
-
-    <button class="btn btn-warning" type="submit">Login</button>
+<br>
+    <button class="btn btn-warning m-2" type="submit">Login</button>
 </form>
 
 <%- include('../partials/footer.ejs') %>

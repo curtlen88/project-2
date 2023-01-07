@@ -1,11 +1,10 @@
 <%- include('partials/header.ejs', { user }) %> 
 
-
-<div class="bg-image" style="background-image: url('/public/background.jpeg');">
   <h2 class="text-center bg-dark text-light p-3">Home</h2>
-  <div class="container vh-min-100 mb-2">
-    <div class="card text mx-auto text-center" style="width: 25rem;">
-        <img src="<%=data[0].strDrinkThumb%>" class="card-img-top text" alt="<%=data[0].strDrink%>">
+
+  <div class="container min-vh-100 mb-2">
+    <div class="card mx-auto text-center" style="max-width: 450px;">
+        <img src="<%=data[0].strDrinkThumb%>" class="card-img-top" alt="<%=data[0].strDrink%>">
         <div class="card-body bg-warning">
           <h3 class="card-text"><%=data[0].strDrink%></h3>
           <p class="card-text">Glass Type: <%=data[0].strGlass%></p>
@@ -34,7 +33,6 @@
         </div>
     </div>
   </div>
-</div>
 
 <%- include('partials/footer.ejs', { user }) %> 
 

@@ -2,14 +2,14 @@
 
 <h3 class="text-center bg-dark text-light p-3">Sign up for an account</h3>
 
-<form class="text-center mt-4" action="/users" method="POST">
-    <label for="email">Email:</label>
+<form class="text-center" action="/users" method="POST">
+    <label class="m-2" for="email">Email:</label>
     <input type="email" name="email" id="email" required />
-
+<br>
     <label for="password">Password:</label>
     <input type="password" name="password" id="password" required/>
-
-    <button class="btn btn-warning" type="submit">Sign Up</button>
+<br>
+    <button class="btn btn-warning m-2" type="submit">Sign Up</button>
 </form>
 
 <%- include('../partials/footer.ejs') %>
