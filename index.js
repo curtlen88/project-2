@@ -64,12 +64,13 @@ app.get('/results', async (req,res) => {
         const response = await axios.get(baseUrl,{ 
             headers: { "Accept-Encoding": "gzip,deflate,compress" } 
         })
-        res.render('results.ejs', {
+          res.render('results.ejs', {
             user: res.locals.user,
             data: response.data.drinks
         })
+        console.log(response.data.drinks,'🔥')
+        
         // res.json(response.data)
-        // console.log(baseUrl)
         // res.send(response.data)      
 
     } catch (error) {
