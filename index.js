@@ -68,11 +68,6 @@ app.get('/results', async (req,res) => {
             user: res.locals.user,
             data: response.data.drinks
         })
-        console.log(response.data.drinks,'🔥')
-        
-        // res.json(response.data)
-        // res.send(response.data)      
-
     } catch (error) {
         console.log('🔥', error)
     }

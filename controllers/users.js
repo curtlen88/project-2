@@ -107,6 +107,8 @@ router.get('/profile', async (req, res) => {
         res.render('users/profile.ejs', {
             user: res.locals.user
         })
+        console.log(res.locals.user.email,'🔥💀🔥')
+        console.log(res.locals.user.email,'🔥💀🔥')
     }
 })
 
