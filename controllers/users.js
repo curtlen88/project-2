@@ -4,6 +4,7 @@ const db = require('../models')
 const router = express.Router()
 const crypto = require('crypto-js')
 const bcrypt = require('bcrypt')
+const axios = require('axios')
 
 // mount our routes on the router
 
@@ -42,10 +43,9 @@ router.post('/', async (req, res) => {
             // redirect to user's profile
             res.redirect('/users/profile')
         }
-
     } catch (err) {
         console.log(err)
-        res.status(500).send('server error')
+        res.status(500).send('server error on POST user to db path 🔥')
     }
 })
 
@@ -86,7 +86,7 @@ router.post('/login', async (req, res) => {
         }
     } catch (err) {
         console.log(err)
-        res.status(500).send('server error')
+        res.status(500).send('server error on POST user login path 🔥')
     }
 })
 
@@ -107,22 +107,21 @@ router.get('/profile', async (req, res) => {
         res.render('users/profile.ejs', {
             user: res.locals.user
         })
-        console.log(res.locals.user.email,'🔥💀🔥')
-        console.log(res.locals.user.email,'🔥💀🔥')
     }
 })
 
 router.put('/:id', async (req,res) => {
     try {
         const passwordChange = await db.user.update({ 
-            password: bcrypt.hashSync(req.body.password, 12) }, 
-            {where: {
-                email: req.body.email
-            }
+            password: bcrypt.hashSync(req.body.password, 12) },{
+                where: {
+                    email: req.body.email
+                }
         })  
         res.redirect('/')
-    } catch (error) {
-        console.log(error)
+    } catch (err) {
+        console.log(err)
+        res.status(500).send('server error on PUT password path 🔥')
     }
 })
 
@@ -136,9 +135,9 @@ router.delete('/favorites/:id', async (req,res) =>{
             }
         })
         res.redirect(req.get('referer'))
-    } catch (error) {
-        console.log(error)
-        res.status(500).send('server error on DELETE path 🔥')
+    } catch (err) {
+        console.log(err)
+        res.status(500).send('server error on DELETE favorite path 🔥')
     }
 })
 
@@ -146,15 +145,41 @@ router.delete('/favorites/:id', async (req,res) =>{
 router.post('/favorites/:id/comment', async (req,res)=>{
     try {
         const newComment = await db.comment.create({
-          userName: req.body.userName,
-          comment: req.body.comment,
-          favoriteId: req.params.id,
-          userId:res.locals.user.id
+            userName: req.body.userName,
+            comment: req.body.comment,
+            favoriteId: req.params.id,
+            userId:res.locals.user.id
         })
         console.log(newComment)
         res.redirect(req.get('referer'))
     } catch (err) {
         console.log(err)
+        res.status(500).send('server error on POST comment path 🔥')
+    }
+})
+
+// GET /users/favorites/:name - return a page with the favorite drink details( instructions, ingredients etc)
+router.get('/favorites/:name', async (req,res) =>{
+    try {
+        let name = req.params.name
+        const baseUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
+        const response = await axios.get(baseUrl,{ 
+            headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+        })
+        const favDrinks = await db.favorite.findAll({
+            where: {
+                name: req.params.name
+            },
+            include: [db.comment]
+        })
+        res.render('./users/details.ejs', {
+            user: res.locals.user,
+            data: response.data.drinks,
+            favDrinks: favDrinks
+        })
+    } catch (err) {
+        console.log(err)
+        res.status(500).send('server error on GET details path 🔥')
     }
 })
 

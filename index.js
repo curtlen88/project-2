@@ -55,24 +55,6 @@ app.use((req, res, next) => {
     next()
 })
 
-
-// axois to hit API
-app.get('/results', async (req,res) => {
-    try {
-        let name = req.query.search
-        const baseUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
-        const response = await axios.get(baseUrl,{ 
-            headers: { "Accept-Encoding": "gzip,deflate,compress" } 
-        })
-          res.render('results.ejs', {
-            user: res.locals.user,
-            data: response.data.drinks
-        })
-    } catch (error) {
-        console.log('🔥', error)
-    }
-})
-
 // random drink on homepage
 app.get('/', async (req,res) => {
     try {
@@ -84,92 +66,16 @@ app.get('/', async (req,res) => {
             data: response.data.drinks,
             name:req.params.name
         })
-        // res.json(response.data)
-        // res.send(response.data)      
-
-    } catch (error) {
-        console.log('🔥', error)
-    }
-})
-
-// POST /users/:id/favorites - receive the name of a drink and add it to the database
-app.post('/favorites', async (req, res) => {
-    // TODO: Get form data and add a new record to DB
-    try {
-      if (req.cookies.userId) {
-        await db.favorite.findOrCreate({
-          where: {
-            name: req.body.name,
-            instructions: req.body.instructions,
-            glassType: req.body.glassType,
-            image: req.body.image,
-            userId: res.locals.user.id
-            // ingredients: req.body.ingredients
-          }
-        })
-      }else {
-        res.redirect('/users/login')
-      }
-      // redirect to /faves to show the user their faves
-      res.redirect('/favorites')
     } catch (err) {
-      console.log(err)
-    } 
-  });
-
-// GET /favorites - return a page with favorited drink
-app.get('/favorites', async (req, res) => {
-    try {
-    //READ function to find all favorite drinks
-      const favDrinks = await db.favorite.findAll({
-        where: {
-          userId: res.locals.user.id
-        },
-        include: [db.comment]
-      })
-      // console.log(favDrinks[0].comments[0].comment)
-      res.render('./users/favorites.ejs', {
-        favDrinks: favDrinks,
-      })
-    } catch (error) {
-      console.log(error)
+        console.log(err)
+        res.status(500).send('server error on GET api results on home page path 🔥')
     }
-  })
-
-// GET /users/favorites/:name - return a page with the favorite drink details( instructions, ingredients etc)
-app.get('/users/favorites/:name', async (req,res) =>{
-  try {
-    let name = req.params.name
-        const baseUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
-        const response = await axios.get(baseUrl,{ 
-            headers: { "Accept-Encoding": "gzip,deflate,compress" } 
-          })
-        const favDrinks = await db.favorite.findAll({
-          where: {
-            name: req.params.name
-          },
-          include: [db.comment]
-          })
-          console.log(favDrinks, 'this it the spot');
-        res.render('./users/details.ejs', {
-            user: res.locals.user,
-            data: response.data.drinks,
-            favDrinks: favDrinks
-          })
-  } catch (error) {
-    console.log(error)
-  }
-})
-
-// routes and controllers
-app.get('/', (req, res) => {
-    console.log(res.locals.user)
-    res.render('home.ejs', {
-        user: res.locals.user
-    })
 })
 
 app.use('/users', require('./controllers/users'))
+app.use('/favorites', require('./controllers/favorites'))
+app.use('/results', require('./controllers/results'))
+
 
 // listen on a port
 app.listen(PORT, () => {
