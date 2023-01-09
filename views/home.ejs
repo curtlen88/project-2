@@ -1,17 +1,23 @@
 <%- include('partials/header.ejs', { user }) %> 
 
+<!-- Page header -->
   <h2 class="text-center bg-dark text-light p-3">Home</h2>
 
+  <!-- Random drink card container -->
   <div class="container min-vh-100 mb-2">
     <div class="card mx-auto text-center" style="max-width: 450px;">
+        <!-- drink image -->
         <img src="<%=data[0].strDrinkThumb%>" class="card-img-top" alt="<%=data[0].strDrink%>">
+        <!-- drink name and glass type -->
         <div class="card-body bg-warning">
           <h3 class="card-text"><%=data[0].strDrink%></h3>
           <p class="card-text">Glass Type: <%=data[0].strGlass%></p>
         </div>
         <ul class="list-group list-group-flush">
+          <!-- drink instructions -->
           <li class="list-group-item text-warning bg-dark">Instructions</li>
           <li class="list-group-item"><%=data[0].strInstructions%></li>
+          <!-- loop through drink ingredients and measurements -->
           <li class="list-group-item text-warning bg-dark">Ingredients</li>
           <% data.forEach((drink) => { %>
             <% for (let i = 1; i <= 15; i++) { %>
@@ -23,6 +29,7 @@
 
         </ul>
         <div class="card-body bg-warning">
+          <!-- form to favorite a drink -->
           <form method="POST" action="/favorites">
             <input hidden type="text" name="name" value="<%= data[0].strDrink %>">
             <input hidden type="text" name="glassType" value="<%= data[0].strGlass %>">

@@ -1,12 +1,16 @@
 <%- include('partials/header.ejs', { user }) %> 
 
+<!-- Page header -->
 <h1 class="text-center bg-dark text-light p-3">Search Results</h1>
 
+<!-- IF search results return and error say drink not found please search again -->
 <%if(!data) {%>
   <h4 class="text-center">Drink Not Found</h4>
   <h4 class="text-center">Please search again!</h4>
+  <!-- if drink found show search results in cards -->
   <%} else {%>
     <div class="vh-min-100 d-flex flex-wrap justify-content-around " >
+      <!-- loop through results create card for each result -->
       <% data.forEach(function(drink) { %>
         <div class="card" style="width: 18rem;">
           <img src="<%=drink.strDrinkThumb%>" class="card-img" alt="<%=drink.strDrink%>">

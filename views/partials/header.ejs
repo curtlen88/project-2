@@ -24,6 +24,7 @@
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
+        <!-- IF a user is logged in show logout, my favorites, my profile links -->
         <% if (user) { %>
             <li class="nav-item">
                 <a class="nav-link" href="/users/logout">Logout</a>
@@ -36,6 +37,7 @@
                     <li><a class="dropdown-item" href="/users/profile">My Profile</a></li>
                 </ul>
             </li>
+        <!-- IF no user is logged in show sign up, sign in links -->
         <% } else { %>
             <li class="nav-item">
                 <a class="nav-link" href="/users/new">Sign Up</a>

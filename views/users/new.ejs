@@ -1,7 +1,9 @@
 <%- include('../partials/header.ejs', { user }) %>
 
+<!-- Page header -->
 <h3 class="text-center bg-dark text-light p-3">Sign up for an account</h3>
 
+<!-- Create profile form and button -->
 <form class="text-center" action="/users" method="POST">
     <label class="m-2" for="email">Email:</label>
     <input type="email" name="email" id="email" required />

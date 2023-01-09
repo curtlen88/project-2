@@ -6,8 +6,6 @@ const crypto = require('crypto-js')
 const bcrypt = require('bcrypt')
 const axios = require('axios')
 
-// mount our routes on the router
-
 // GET /users/new -- serves a form to create a new user
 router.get('/new', (req, res) => {
     res.render('users/new.ejs', {
@@ -26,7 +24,6 @@ router.post('/', async (req, res) => {
         }) 
         // if the user is found, redirect user to login
         if (!created) {
-            console.log('user exists!')
             res.redirect('/users/login?message=Please log in to continue.')
         } else {
             // here we know its a new user
@@ -76,7 +73,6 @@ router.post('/login', async (req, res) => {
             res.redirect('/users/login?message=' + badCredentialMessage)
         } else {
             // if the user is found and their password matches log them in
-            console.log('logging user in!')
             // ecrypt the new user's id and convert it to a string
             const encryptedId = crypto.AES.encrypt(String(user.id), process.env.SECRET)
             const encryptedIdString = encryptedId.toString()
@@ -110,8 +106,10 @@ router.get('/profile', async (req, res) => {
     }
 })
 
+// POST /users/:id change user passwork
 router.put('/:id', async (req,res) => {
     try {
+        // update user db with password change
         const passwordChange = await db.user.update({ 
             password: bcrypt.hashSync(req.body.password, 12) },{
                 where: {
@@ -125,10 +123,10 @@ router.put('/:id', async (req,res) => {
     }
 })
 
-// DELETE FAVS
+// POST /users/favorites/:id delete a favorited drink
 router.delete('/favorites/:id', async (req,res) =>{
-    console.log(req.params.id)
     try {
+        // delete selected drink
         await db.favorite.destroy({
             where: {
                 id: req.params.id
@@ -141,16 +139,16 @@ router.delete('/favorites/:id', async (req,res) =>{
     }
 })
 
-// add a comment
+// POST /users/favorites/:id/comment add a comment to comment db model
 router.post('/favorites/:id/comment', async (req,res)=>{
     try {
+        // create a new comment
         const newComment = await db.comment.create({
             userName: req.body.userName,
             comment: req.body.comment,
             favoriteId: req.params.id,
             userId:res.locals.user.id
         })
-        console.log(newComment)
         res.redirect(req.get('referer'))
     } catch (err) {
         console.log(err)
@@ -161,15 +159,18 @@ router.post('/favorites/:id/comment', async (req,res)=>{
 // GET /users/favorites/:name - return a page with the favorite drink details( instructions, ingredients etc)
 router.get('/favorites/:name', async (req,res) =>{
     try {
+        // get API results based on the name in the url
         let name = req.params.name
         const baseUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
         const response = await axios.get(baseUrl,{ 
             headers: { "Accept-Encoding": "gzip,deflate,compress" } 
         })
+        // find all drinks in favorite db where the name matches the name in url
         const favDrinks = await db.favorite.findAll({
             where: {
                 name: req.params.name
             },
+            // add the comments db
             include: [db.comment]
         })
         res.render('./users/details.ejs', {

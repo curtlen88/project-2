@@ -1,16 +1,20 @@
 <%- include('../partials/header', { user }) %>
 
+<!-- Page header  -->
 <h2 class="text-center bg-dark text-light p-3">My Favorites</h2>
 
+<!-- loop through and show all favorited drinks -->
 <div class="d-flex flex-wrap justify-content-around mb-2" >
     <% favDrinks.forEach(function(drink) { %>
       <div class="card" style="width: 18rem;">
         <img src="<%=drink.image%>" class="card-img" alt="<%=drink.name%>">
         <div class="card-img-overlay d-flex flex-column justify-content-between text-center">
+          <!-- Button to show drink details -->
           <form method="GET" action="/users/favorites/<%= drink.name %>">
             <input hidden type="text" name="name" value="<%= drink.name %>">
             <button class="btn btn-outline-warning text-center " type="submit"><%= drink.name %></button>
           </form>
+          <!-- Delete Button -->
           <form method="POST" action="/users/favorites/<%= drink.id %>/?_method=DELETE">
               <button class="btn btn-outline-warning text-center" style="margin: 5px;" type="submit">Delete</button>
           </form>

@@ -9,11 +9,12 @@ const axios = require('axios')
 // GET /favorites - return a page with favorited drink
 router.get('/', async (req, res) => {
     try {
-    //READ function to find all favorite drinks
+        // READ function to find all favorite drinks for logged in user
         const favDrinks = await db.favorite.findAll({
             where: {
             userId: res.locals.user.id
         },
+        // include the comment db model
             include: [db.comment]
         })
         res.render('./users/favorites.ejs', {
@@ -25,10 +26,10 @@ router.get('/', async (req, res) => {
     }
 })
 
-// POST /users/:id/favorites - receive the name of a drink and add it to the database
+// POST /favorites - receive the name of a drink and add it to the database
 router.post('/', async (req, res) => {
-    // Get form data and add a new record to DB
     try {
+        // IF a user is logged in find or create the drink in the db
         if (req.cookies.userId) {
             await db.favorite.findOrCreate({
                 where: {
@@ -39,10 +40,10 @@ router.post('/', async (req, res) => {
                     userId: res.locals.user.id
         }
     })
+        // IF no user direct to the login page
         }else {
             res.redirect('/users/login')
         }
-        // redirect to /faves to show the user their faves
         res.redirect('/favorites')
     } catch (err) {
         console.log(err)

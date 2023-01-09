@@ -58,10 +58,14 @@ app.use((req, res, next) => {
 // random drink on homepage
 app.get('/', async (req,res) => {
     try {
+        // user random drink url to get random drink  
         const baseUrl = `https://www.thecocktaildb.com/api/json/v1/1/random.php`
+        // axios and await url to return result
         const response = await axios.get(baseUrl,{ 
+            // allow api encoding to make results work
             headers: { "Accept-Encoding": "gzip,deflate,compress" } 
         })
+        // render results to home screen 
         res.render('home.ejs', {
             data: response.data.drinks,
             name:req.params.name
@@ -72,6 +76,7 @@ app.get('/', async (req,res) => {
     }
 })
 
+// require controllers
 app.use('/users', require('./controllers/users'))
 app.use('/favorites', require('./controllers/favorites'))
 app.use('/results', require('./controllers/results'))

@@ -1,17 +1,22 @@
 <%- include('../partials/header.ejs', { user }) %> 
 
+<!-- Page Header -->
 <h2 class="text-center bg-dark text-light p-3"><%=data[0].strDrink%> Details</h2>
 
+<!-- Card to show the details of the selected drink -->
 <div class="container min-vh-100 mb-2">
   <div class="card text mx-auto text-center" style="max-width: 450px;">
       <img src="<%=data[0].strDrinkThumb%>" class="card-img-top text" alt="<%=data[0].strDrink%>">
+    <!-- Shows drink name and glass typer -->
     <div class="card-body bg-warning">
         <h3 class="card-text"><%=data[0].strDrink%></h3>
         <p class="card-text">Glass Type: <%=data[0].strGlass%></p>
     </div>
+    <!-- Show drinks instructions -->
     <ul class="list-group list-group-flush">
         <li class="list-group-item text-warning bg-dark">Instructions</li>
         <li class="list-group-item"><%=data[0].strInstructions%></li>
+        <!-- loop to show drink instructions and measurements-->
         <li class="list-group-item text-warning bg-dark">Ingredients</li>
         <% data.forEach((drink) => { %>
           <% for (let i = 1; i <= 15; i++) { %>
@@ -21,9 +26,12 @@
           <% } %>
         <% }) %>
     </ul>
+    <!-- Form and IF statement showing comments ELSE favorite button if drink isnt favorited -->
     <ul class="list-group list-group-flush text-center">
         <div class="card-body text-center bg-warning">
+          <!-- IF favorited show comments -->
           <% if(favDrinks.length > 0) {%>
+              <!-- Add a comment to drink -->
               <form class="bg-warning" action="/users/favorites/<%=favDrinks[0].id%>/comment" method="POST">
               <div class="form-group text-center">
                   <ul>
@@ -36,11 +44,14 @@
                   </ul>
                 <button class="btn btn-outline-dark mt-3 mb-3" type="submit">Submit</button>
                 <li class="list-group-item text-warning bg-dark">Comments</li>
+                <!-- loop through all comments and show on the screen -->
                 <%favDrinks[0].comments.forEach(function(c){%>
                   <li class="list-group-item">User: <%=c.userName%></li>
                   <li class="list-group-item">Comment: <%=c.comment%></li>
                 <%})%> 
+              <!-- if not favorited show favorite button -->
               <%} else {%>
+                <!-- Favorite Button -->
                 <div class="card-body bg-warning text-center">
                   <form method="POST" action="/favorites">
                     <input hidden type="text" name="name" value="<%= data[0].strDrink %>">

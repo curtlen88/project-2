@@ -1,11 +1,14 @@
 <%- include('../partials/header.ejs', { user }) %>
 
+<!-- Page header -->
 <h3 class="text-center bg-dark text-light p-3">Login to your account</h3>
 
+<!-- Show access not allowed message -->
 <% if (message) { %>
     <p class="text-center"><%= message %></p>
 <% } %>
 
+<!-- Login form and button -->
 <form class="text-center" action="/users/login" method="POST">
     <label for="email">Email:</label>
     <input class="m-2" type="email" name="email" id="email" required />

@@ -6,12 +6,14 @@ const crypto = require('crypto-js')
 const bcrypt = require('bcrypt')
 const axios = require('axios')
 
-// axois to hit API
+// // GET /results axois to hit API
 router.get('/', async (req,res) => {
     try {
+        // query the search bar to grab name of the drink to search the API
         let name = req.query.search
         const baseUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
         const response = await axios.get(baseUrl,{ 
+            // accept encoded API results
             headers: { "Accept-Encoding": "gzip,deflate,compress" } 
         })
         res.render('results.ejs', {

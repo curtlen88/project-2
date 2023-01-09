@@ -6,9 +6,14 @@ DrinkTales is an app were you can find new drinks, favorite and comment on drink
 Want to try a new twist on your favorite alcohol, or have an ingredient you love but want to find new recipies to use it in? 
 Pop your ingredient in the search bar and see what you find!
 
+# See the App by Following the Link Below
+* https://drinktales-app.herokuapp.com/favorites
+
 # About the App
 
 DrinkTales will be a social drink recipe app where you can search for ingredients and get new cocktail recipies to make for yourself. You will be able to add recipies to your favorites page so they are stored for you anytime you want to pull them up again. You can leave comments on each cocktail recipe and see what what other people have to say about the recipe. 
+
+# Installation Instructions
 
 # API Selected
 * https://www.thecocktaildb.com/api.php
@@ -28,6 +33,14 @@ DrinkTales will be a social drink recipe app where you can search for ingredient
 * Dovenv
 * Cookie Parser
 * Crypto-JS
+
+# Approach Taken
+Mobile First
+
+# Post-Project Reflection 
+
+
+Unsolved problems or growth areas you may have had
 
 # ERD 
 
