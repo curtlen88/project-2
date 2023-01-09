@@ -16,22 +16,16 @@ DrinkTales will be a social drink recipe app where you can search for ingredient
 
 # Installation Instructions
 
-Fork and Clone the repo to your local repository
-Run npm init -y to initialize npm in the terminal
-Open the package.json file and confirm the npm packages listed under dependencies
-In the terminal run npm install or npm i to download all required npm packages. 
-Make sure node_modules and .env folder are showing the gitignore files before committing to repository
-Run sequelize db:create in the terminal to create the database in psql
-Run sequelize db:migrate in the terminal to migrate the models
-Ensure the correct assosiations in the models 
-Use the nodemon command in the terminal to start your application locally
-Go to http://localhost:8000/ in your browser to see the app and track your changes
-
-# API Selected
-
-* https://www.thecocktaildb.com/api.php
-![Getting Started](./imgs/APIresult.png)
-
+* Fork and Clone the repo to your local repository
+* Run npm init -y to initialize npm in the terminal
+* Open the package.json file and confirm the npm packages listed under dependencies
+* In the terminal run npm install or npm i to download all required npm packages. 
+* Make sure node_modules and .env folder are showing the gitignore files before committing to repository
+* Run sequelize db:create in the terminal to create the database in psql
+* Run sequelize db:migrate in the terminal to migrate the models
+* Ensure the correct assosiations in the models 
+* Use the nodemon command in the terminal to start your application locally
+* Go to http://localhost:8000/ in your browser to see the app and track your changes
 
 # Tech Used
 
@@ -62,6 +56,11 @@ Go to http://localhost:8000/ in your browser to see the app and track your chang
 ![Getting Started](./imgs/Favoritespage.png)
 ![Getting Started](./imgs/SignupPage.png)
 ![Getting Started](./imgs/UserProfilePage.png)
+
+# API Selected
+
+* https://www.thecocktaildb.com/api.php
+![Getting Started](./imgs/APIresult.png)
 
 # User Stories
 
@@ -101,7 +100,7 @@ I grew a lot from this project. In the begining I was very unsure of my ability 
 
 One ah-ha moment I had was using the testdb.js file as I found it very useful to be able to code and test outside of the structure of the existing code. It was then very clear what needed to happen inside the existing code because I had ensured what I was doing worked before adding to the app. This project also cemented for me that when coding I need to works systematically fixing one small problem or feature at a time. 
 
-The main unsolved problem I have is when selecting a drink from the search result to view its details the comments show if a drink is favorited in the databse by any user insead of a favorite button as that specific user has not favorite that drink yet and should not be able to comment on it without favoriting. I allow would like to fix how the footer is not set to the bottom of the screen in all views. 
+The main unsolved problem I have is when selecting a drink from the search result to view its details the comments show if a drink is favorited in the databse by any user insead of a favorite button as that specific user has not favorite that drink yet and should not be able to comment on it without favoriting. I also would like to fix how the footer is not set to the bottom of the screen in all views. 
 
 # Sources Used
 
