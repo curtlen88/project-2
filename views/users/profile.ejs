@@ -3,6 +3,11 @@
 <!-- Page header -->
 <h3 class="text-center bg-dark text-light p-3">Update your Password</h3>
 
+<!-- Show access not allowed message -->
+<% if (message) { %>
+    <p class="text-center"><%= message %></p>
+<% } %>
+
 <!-- Update password form and button -->
 <form class="text-center" action="/users/<%=user.id%>/?_method=PUT" method="POST">
     <label for="email">Email:</label>

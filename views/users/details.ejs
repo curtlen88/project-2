@@ -11,6 +11,8 @@
     <div class="card-body bg-warning">
         <h3 class="card-text"><%=data[0].strDrink%></h3>
         <p class="card-text">Glass Type: <%=data[0].strGlass%></p>
+        <p> This is favdrinks user id:<% favDrinks.userId %> </p>
+        <p> This is the user id: <% user.id %> </p>
     </div>
     <!-- Show drinks instructions -->
     <ul class="list-group list-group-flush">
@@ -29,9 +31,21 @@
     <!-- Form and IF statement showing comments ELSE favorite button if drink isnt favorited -->
     <ul class="list-group list-group-flush text-center">
         <div class="card-body text-center bg-warning">
-          <!-- IF favorited show comments -->
-          <% if(favDrinks.length > 0) {%>
+          <!-- if not favorited show favorite button -->
+            <!-- Favorite Button -->
+            <div class="card-body bg-warning text-center">
+              <form method="POST" action="/favorites">
+                <input hidden type="text" name="name" value="<%= data[0].strDrink %>">
+                <input hidden type="text" name="glassType" value="<%= data[0].strGlass %>">
+                <input hidden type="text" name="instructions" value="<%= data[0].strInstructions %>">
+                <input hidden type="text" name="image" value="<%=data[0].strDrinkThumb%>">
+                <button class="btn btn-outline-dark" type="submit">Favorite</button>
+              </form>
+            </div>
+          <% if(favDrinks.length > 0) { %>
+          <!-- IF favorited show comments --> 
               <!-- Add a comment to drink -->
+              <h3 class="mb-4"> Add a comment below </h3>
               <form class="bg-warning" action="/users/favorites/<%=favDrinks[0].id%>/comment" method="POST">
               <div class="form-group text-center">
                   <ul>
@@ -49,21 +63,9 @@
                   <li class="list-group-item">User: <%=c.userName%></li>
                   <li class="list-group-item">Comment: <%=c.comment%></li>
                 <%})%> 
-              <!-- if not favorited show favorite button -->
-              <%} else {%>
-                <!-- Favorite Button -->
-                <div class="card-body bg-warning text-center">
-                  <form method="POST" action="/favorites">
-                    <input hidden type="text" name="name" value="<%= data[0].strDrink %>">
-                    <input hidden type="text" name="glassType" value="<%= data[0].strGlass %>">
-                    <input hidden type="text" name="instructions" value="<%= data[0].strInstructions %>">
-                    <input hidden type="text" name="image" value="<%=data[0].strDrinkThumb%>">
-                    <button class="btn btn-outline-dark" type="submit">Favorite</button>
-                  </form>
-                </div>
-              <%}%>
               </div>
           </form>  
+          <%}%>
         </div>       
     </ul>
   </div>

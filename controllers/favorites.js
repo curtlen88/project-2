@@ -34,7 +34,6 @@ router.post('/', async (req, res) => {
             await db.favorite.findOrCreate({
                 where: {
                     name: req.body.name,
-                    instructions: req.body.instructions,
                     glassType: req.body.glassType,
                     image: req.body.image,
                     userId: res.locals.user.id

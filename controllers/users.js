@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
         }) 
         // if the user is found, redirect user to login
         if (!created) {
-            res.redirect('/users/login?message=Please log in to continue.')
+            res.redirect('/users/login?message=You already have and account, please log in to continue.')
         } else {
             // here we know its a new user
             // hash the supplied password
@@ -101,22 +101,28 @@ router.get('/profile', async (req, res) => {
         res.redirect('/users/login?message=You must authenticate before you are authorized to view this resource!')
     } else {
         res.render('users/profile.ejs', {
+            message: req.query.message ? req.query.message : null,
             user: res.locals.user
         })
     }
 })
 
-// POST /users/:id change user passwork
+// POST /users/:id change user password
 router.put('/:id', async (req,res) => {
     try {
         // update user db with password change
-        const passwordChange = await db.user.update({ 
-            password: bcrypt.hashSync(req.body.password, 12) },{
-                where: {
-                    email: req.body.email
-                }
-        })  
-        res.redirect('/')
+        //check if logged in user has the same email as the email they are trying to change 
+        if (res.locals.user.email !== req.body.email) {
+            res.redirect('/users/profile?message=Your email was incorrect please check your email and try again!')
+        }else {
+            const passwordChange = await db.user.update({ 
+                password: bcrypt.hashSync(req.body.password, 12) },{
+                    where: {
+                        email: req.body.email
+                    }
+            })
+            res.redirect('/')
+        }
     } catch (err) {
         console.log(err)
         res.status(500).send('server error on PUT password path 🔥')
@@ -171,7 +177,7 @@ router.get('/favorites/:name', async (req,res) =>{
                 name: req.params.name
             },
             // add the comments db
-            include: [db.comment]
+            include: [db.comment, db.user]
         })
         res.render('./users/details.ejs', {
             user: res.locals.user,
